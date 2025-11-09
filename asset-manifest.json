@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/rosettafin/static/css/main.7f9764e6.css",
-    "main.js": "/rosettafin/static/js/main.d5f84a90.js",
+    "main.js": "/rosettafin/static/js/main.2376eca1.js",
     "static/js/453.d668b3f5.chunk.js": "/rosettafin/static/js/453.d668b3f5.chunk.js",
     "index.html": "/rosettafin/index.html",
     "main.7f9764e6.css.map": "/rosettafin/static/css/main.7f9764e6.css.map",
-    "main.d5f84a90.js.map": "/rosettafin/static/js/main.d5f84a90.js.map",
+    "main.2376eca1.js.map": "/rosettafin/static/js/main.2376eca1.js.map",
     "453.d668b3f5.chunk.js.map": "/rosettafin/static/js/453.d668b3f5.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7f9764e6.css",
-    "static/js/main.d5f84a90.js"
+    "static/js/main.2376eca1.js"
   ]
 }
