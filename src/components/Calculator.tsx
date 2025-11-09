@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Display from "./Display";
 import Keypad from "./Keypad";
 import SidePanel from "./SidePanel";
@@ -29,7 +29,7 @@ const Calculator: React.FC = () => {
   const [dateMode, setDateMode] = useState<boolean>(false);
   const [dateInputs, setDateInputs] = useState<string[]>([]);
 
-  const handleButton = (label: string) => {
+  const handleButton = useCallback((label: string) => {
     if (label === "ΔMTS") {
       setDateMode(true);
       setInput("");
@@ -176,7 +176,50 @@ const Calculator: React.FC = () => {
         setIsResultDisplayed(true);
       }
     }
-  };
+  }, [dateMode, isResultDisplayed, input, dateInputs, stack, tvm, setDateMode, setInput, setDateInputs, setIsResultDisplayed, setStack, setTVM]);
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      const key = event.key;
+      let buttonLabel = "";
+
+      if (key >= "0" && key <= "9") {
+        buttonLabel = key;
+      } else {
+        switch (key) {
+          case "+":
+            buttonLabel = "+";
+            break;
+          case "-":
+            buttonLabel = "-";
+            break;
+          case "*":
+            buttonLabel = "×";
+            break;
+          case "/":
+            buttonLabel = "÷";
+            break;
+          case "Enter":
+            buttonLabel = "ENTER";
+            break;
+          case ".":
+            buttonLabel = ".";
+            break;
+          default:
+            return;
+        }
+      }
+
+      handleButton(buttonLabel);
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [handleButton]);
+
 
   const getDisplayValue = () => {
     if (dateMode) {
